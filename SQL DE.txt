@@ -1,0 +1,53 @@
+create table TRANSACTION_( 
+    date_ DATE, 
+    order_id NUMBER, 
+    client_id NUMBER, 
+    prop_id NUMBER, 
+    prod_price NUMBER, 
+    prod_qty NUMBER 
+);
+
+INSERT INTO TRANSACTION_ (date_, order_id, client_id, prop_id, prod_price, prod_qty) 
+VALUES (TO_DATE('01/01/20', 'DD/MM/RR'), 1234, 999, 490756, 50, 1);
+INSERT INTO TRANSACTION_ (date_, order_id, client_id, prop_id, prod_price, prod_qty) 
+VALUES (TO_DATE('01/01/20', 'DD/MM/RR'), 1234, 999, 490756, 50, 1);
+INSERT INTO TRANSACTION_ (date_, order_id, client_id, prop_id, prod_price, prod_qty) 
+VALUES (TO_DATE('01/01/20', 'DD/MM/RR'), 1234, 999, 389728, 3.56, 4);
+INSERT INTO TRANSACTION_ (date_, order_id, client_id, prop_id, prod_price, prod_qty) 
+VALUES (TO_DATE('01/01/20', 'DD/MM/RR'), 3456, 845, 490756, 50, 2);
+INSERT INTO TRANSACTION_ (date_, order_id, client_id, prop_id, prod_price, prod_qty) 
+VALUES (TO_DATE('01/01/20', 'DD/MM/RR'), 3456, 845, 549380, 300, 1);
+INSERT INTO TRANSACTION_ (date_, order_id, client_id, prop_id, prod_price, prod_qty) 
+VALUES (TO_DATE('01/01/20', 'DD/MM/RR'), 3456, 845, 293718, 10, 6);
+
+
+
+CREATE TABLE PRODUCT_NOMENCLATURE( 
+    product_id NUMBER, 
+    product_type VARCHAR2(20), 
+    product_name VARCHAR2(20) 
+);
+
+
+INSERT INTO PRODUCT_NOMENCLATURE (product_id, product_type, product_name)
+VALUES (490756, 'MEUBLE', 'Chaise');
+INSERT INTO PRODUCT_NOMENCLATURE (product_id, product_type, product_name)
+VALUES (389728, 'DECO', 'Boule de Noel');
+INSERT INTO PRODUCT_NOMENCLATURE (product_id, product_type, product_name)
+VALUES (549380, 'MEUBLE', 'Canape');
+INSERT INTO PRODUCT_NOMENCLATURE (product_id, product_type, product_name)
+VALUES (293718, 'DECO', 'Mug');
+
+
+SELECT date_ AS datee, SUM(prod_price * prod_qty) AS ventes
+FROM TRANSACTION_
+WHERE date_ BETWEEN TO_DATE('01/01/19', 'DD/MM/RR') AND TO_DATE('31/12/19', 'DD/MM/RR')
+GROUP BY date_
+ORDER BY date_ ASC;
+
+
+WHERE date_ BETWEEN TO_DATE('01/01/19', 'DD/MM/RR') AND TO_DATE('31/12/19', 'DD/MM/RR')
+JOIN 
+GROUP BY date_
+ORDER BY date_ ASC;
+
